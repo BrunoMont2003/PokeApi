@@ -4,7 +4,12 @@ const poke_container = document.getElementById("poke_container");
 const btnNext = document.getElementById("btnNext");
 const btnPrevious = document.getElementById("btnPrevious");
 const pagination = document.getElementById("pagination");
-var pos = 1120;
+const pageNumber = document.getElementById("page-number");
+var pos = 0;
+
+const setPageNumber = (number) => {
+  pageNumber.innerText = "Página #" + parseInt(number / 20 + 1);
+};
 
 const listStats = (stats) => {
   let list = "";
@@ -78,6 +83,7 @@ btnPrevious.addEventListener("click", async () => {
     pos -= 20;
     let pokemons = await getPokemons(pos);
     await showPokemons(pokemons);
+    setPageNumber(pos);
   }
 });
 btnNext.addEventListener("click", async () => {
@@ -85,6 +91,7 @@ btnNext.addEventListener("click", async () => {
     pos += 20;
     let pokemons = await getPokemons(pos);
     await showPokemons(pokemons);
+    setPageNumber(pos);
   }
 });
 pagination.addEventListener("click", async ({ target }) => {
@@ -93,9 +100,11 @@ pagination.addEventListener("click", async ({ target }) => {
     target.getAttribute("data-") !== "static"
   ) {
     let id = target.getAttribute("id");
-    let number = id[id.length - 1];
+    let number = id.split("-")[1];
     pos = 20 * (number - 1);
     let pokemons = await getPokemons(pos);
     await showPokemons(pokemons);
+    setPageNumber(pos);
   }
 });
+setPageNumber(pos);
