@@ -34,7 +34,7 @@ const listAbilities = (abilities) => {
 const showPokemons = async (pokemons) => {
   poke_container.innerHTML = "";
   pokemons.map(async ({ name }) => {
-    let { abilities, stats, id } = await getPokemon(name);
+    let { abilities, stats, id, img } = await getPokemon(name);
 
     poke_container.innerHTML += `
     <div class="bg-slate-200 text-black rounded-lg shadow-md max-w-sm z-10">
@@ -47,7 +47,7 @@ const showPokemons = async (pokemons) => {
           <div class="grid grid-cols-2 place-items-center">
             <img
               class="w-96"
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${id}.png"
+              src="${img}"
               alt=${name}
             />
             <ul class="p-5">

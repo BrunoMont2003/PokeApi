@@ -10,7 +10,7 @@ export async function getPokemons(pos) {
 export async function getPokemon(name) {
   const URI = "https://pokeapi.co/api/v2/pokemon/" + name;
   const response = await fetch(URI);
-  const { abilities, stats, id } = await response.json();
+  const { abilities, stats, id, sprites } = await response.json();
   let myAbilities = [];
   let myStats = [];
   abilities.forEach(({ ability }) => {
@@ -26,5 +26,6 @@ export async function getPokemon(name) {
     abilities: myAbilities,
     stats: myStats,
     id,
+    img: sprites.front_default,
   };
 }
