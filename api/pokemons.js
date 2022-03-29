@@ -4,7 +4,6 @@ export async function getPokemons(pos) {
   const URI = "https://pokeapi.co/api/v2/pokemon?limit=20&offset=";
   const response = await fetch(URI + pos);
   const { results } = await response.json();
-  console.log(results);
   return results;
 }
 

@@ -3,6 +3,7 @@ import { getPokemon, getPokemons } from "./api/pokemons.js";
 const poke_container = document.getElementById("poke_container");
 const btnNext = document.getElementById("btnNext");
 const btnPrevious = document.getElementById("btnPrevious");
+const pagination = document.getElementById("pagination");
 var pos = 0;
 
 const listStats = (stats) => {
@@ -85,4 +86,18 @@ btnNext.addEventListener("click", async () => {
   pos += 20;
   let pokemons = await getPokemons(pos);
   await showPokemons(pokemons);
+});
+pagination.addEventListener("click", async ({ target }) => {
+  if (
+    target.tagName === "BUTTON" &&
+    target.getAttribute("data-") !== "static"
+  ) {
+    console.log(target);
+    let id = target.getAttribute("id");
+    let number = id[id.length - 1];
+    console.log(number);
+    pos = 20 * (number - 1);
+    let pokemons = await getPokemons(pos);
+    await showPokemons(pokemons);
+  }
 });
