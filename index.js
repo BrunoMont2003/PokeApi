@@ -4,7 +4,7 @@ const poke_container = document.getElementById("poke_container");
 const btnNext = document.getElementById("btnNext");
 const btnPrevious = document.getElementById("btnPrevious");
 const pagination = document.getElementById("pagination");
-var pos = 0;
+var pos = 1120;
 
 const listStats = (stats) => {
   let list = "";
@@ -81,9 +81,11 @@ btnPrevious.addEventListener("click", async () => {
   }
 });
 btnNext.addEventListener("click", async () => {
-  pos += 20;
-  let pokemons = await getPokemons(pos);
-  await showPokemons(pokemons);
+  if (pos < 1120) {
+    pos += 20;
+    let pokemons = await getPokemons(pos);
+    await showPokemons(pokemons);
+  }
 });
 pagination.addEventListener("click", async ({ target }) => {
   if (
