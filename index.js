@@ -46,7 +46,6 @@ const showPokemons = async (pokemons) => {
           <h6 class="text-xs mb-3 text-center">#${id}</h6>
           <div class="grid grid-cols-2 place-items-center">
             <img
-              class="w-96"
               src="${img}"
               alt=${name}
             />
