@@ -44,7 +44,7 @@ const showPokemons = async (pokemons) => {
             <img
               class="w-96"
               src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${id}.png"
-              alt="product image"
+              alt=${name}
             />
             <ul class="p-5">
                 ${listStats(stats)}

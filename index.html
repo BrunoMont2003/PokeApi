@@ -4,85 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PokeApi</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="assets/global.css" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <div class="bg-pattern min-h-screen relative">
-      <div class="absolute bg-blue-900 w-full h-full bg-opacity-25"></div>
-      <h1
-        class="title text-3xl text-center py-10 text-black col-span-full z-10"
+    <div class="min-h-screen relative">
+      <div class="absolute bg-blue-900 w-full h-full bg-opacity-25 -z-10"></div>
+      <div class="absolute bg-pattern w-full h-full bg-opacity-25 -z-20"></div>
+      <h1 class="title text-3xl text-center py-10 text-black">Pokedex</h1>
+      <div
+        class="p-5 flex justify-center items-center w-90 mx-auto md:justify-around"
       >
-        Pokedex
-      </h1>
+        <button
+          id="btnPrevious"
+          type="button"
+          class="flex justify-center items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 w-32"
+        >
+          <i class="bx bx-chevron-left bx-sm"></i>
+          <span class="mr-4"> Previous </span>
+        </button>
+        <button
+          id="btnNext"
+          type="button"
+          class="flex justify-center items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 w-32"
+        >
+          <span class="ml-4"> Next </span>
+          <i class="bx bx-chevron-right bx-sm"></i>
+        </button>
+      </div>
       <div
         id="poke_container"
         class="p-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-20 justify-items-center"
-      >
-        <!-- <div class="bg-blue-900 text-white rounded-lg shadow-md w-80 z-10">
-          <h2
-            class="text-xl text-center my-3 font-semibold uppercase pokemon-name tracking-widest"
-          >
-            pikachu
-          </h2>
-          <div class="grid grid-cols-2 place-items-center">
-            <img
-              class="w-96"
-              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/female/25.png"
-              alt="product image"
-            />
-            <ul class="p-5">
-              <li>
-                <span class="font-semibold">Hp:</span>
-                <span class="">35</span>
-              </li>
-              <li>
-                <span class="font-semibold">Attack:</span>
-                <span class="">35</span>
-              </li>
-              <li>
-                <span class="font-semibold">Defense:</span>
-                <span class="">35</span>
-              </li>
-              <li>
-                <span class="font-semibold">Special-Attack:</span>
-                <span class="">35</span>
-              </li>
-              <li>
-                <span class="font-semibold">Special-Attack:</span>
-                <span class="">35</span>
-              </li>
-            </ul>
-          </div>
-          <div class="px-5 border-t border-white bg-opacity-10">
-            <h4 class="font-semibold tracking-wider text-xs my-3 font-sans">
-              Abilities
-            </h4>
-            <div class="flex flex-wrap my-4">
-              <span
-                class="px-2 py-1 tracking-widest bg-pink-300 bg-opacity-20 font-semibold text-xs rounded-xl text-white mr-5 mb-2"
-              >
-                static</span
-              >
-              <span
-                class="px-2 py-1 tracking-widest bg-pink-300 bg-opacity-20 font-semibold text-xs rounded-xl text-white mr-5 mb-2"
-              >
-                lightning-rod</span
-              >
-              <span
-                class="px-2 py-1 tracking-widest bg-pink-300 bg-opacity-20 font-semibold text-xs rounded-xl text-white mr-5 mb-2"
-              >
-                static</span
-              >
-              <span
-                class="px-2 py-1 tracking-widest bg-pink-300 bg-opacity-20 font-semibold text-xs rounded-xl text-white mr-5 mb-2"
-              >
-                static</span
-              >
-            </div>
-          </div>
-        </div> -->
-      </div>
+      ></div>
     </div>
     <script type="module" src="index.js"></script>
   </body>
