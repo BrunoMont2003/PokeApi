@@ -32,7 +32,6 @@ const listAbilities = (abilities) => {
 };
 
 const showPokemons = async (pokemons) => {
-  console.log(pokemons);
   poke_container.innerHTML = "";
   pokemons.map(async ({ name }) => {
     let { abilities, stats, id } = await getPokemon(name);
@@ -92,10 +91,8 @@ pagination.addEventListener("click", async ({ target }) => {
     target.tagName === "BUTTON" &&
     target.getAttribute("data-") !== "static"
   ) {
-    console.log(target);
     let id = target.getAttribute("id");
     let number = id[id.length - 1];
-    console.log(number);
     pos = 20 * (number - 1);
     let pokemons = await getPokemons(pos);
     await showPokemons(pokemons);
