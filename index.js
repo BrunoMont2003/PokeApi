@@ -1,7 +1,9 @@
 import { getPokemon, getPokemons } from "./api/pokemons.js";
-let pokemons = await getPokemons(0);
 
 const poke_container = document.getElementById("poke_container");
+const btnNext = document.getElementById("btnNext");
+const btnPrevious = document.getElementById("btnPrevious");
+var pos = 0;
 
 const listStats = (stats) => {
   let list = "";
@@ -30,16 +32,18 @@ const listAbilities = (abilities) => {
 
 const showPokemons = async (pokemons) => {
   console.log(pokemons);
+  poke_container.innerHTML = "";
   pokemons.map(async ({ name }) => {
     let { abilities, stats, id } = await getPokemon(name);
 
     poke_container.innerHTML += `
-    <div class="bg-slate-200 text-black rounded-lg shadow-md w-90 z-10">
+    <div class="bg-slate-200 text-black rounded-lg shadow-md max-w-sm z-10">
           <h2
-            class="text-xl text-center my-3 font-semibold uppercase pokemon-name tracking-widest"
+            class="text-xl text-center mt-3 font-semibold uppercase pokemon-name tracking-widest"
           >
             ${name}
           </h2>
+          <h6 class="text-xs mb-3 text-center">#${id}</h6>
           <div class="grid grid-cols-2 place-items-center">
             <img
               class="w-96"
@@ -66,4 +70,19 @@ const showPokemons = async (pokemons) => {
   });
 };
 
+const pokemons = await getPokemons(pos);
+
 await showPokemons(pokemons);
+
+btnPrevious.addEventListener("click", async () => {
+  if (pos > 0) {
+    pos -= 20;
+    let pokemons = await getPokemons(pos);
+    await showPokemons(pokemons);
+  }
+});
+btnNext.addEventListener("click", async () => {
+  pos += 20;
+  let pokemons = await getPokemons(pos);
+  await showPokemons(pokemons);
+});
