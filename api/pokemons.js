@@ -1,16 +1,17 @@
-import fetch from "node-fetch";
+// import fetch from "node-fetch";
 
 export async function getPokemons(pos) {
   const URI = "https://pokeapi.co/api/v2/pokemon?limit=20&offset=";
   const response = await fetch(URI + pos);
-  const pokemons = await response.json();
-  return pokemons;
+  const { results } = await response.json();
+  console.log(results);
+  return results;
 }
 
 export async function getPokemon(name) {
   const URI = "https://pokeapi.co/api/v2/pokemon/" + name;
   const response = await fetch(URI);
-  const { abilities, stats } = await response.json();
+  const { abilities, stats, id } = await response.json();
   let myAbilities = [];
   let myStats = [];
   abilities.forEach(({ ability }) => {
@@ -25,5 +26,6 @@ export async function getPokemon(name) {
   return {
     abilities: myAbilities,
     stats: myStats,
+    id,
   };
 }

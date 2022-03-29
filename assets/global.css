@@ -7,9 +7,15 @@
   box-sizing: border-box;
   font-family: "Advent Pro", sans-serif;
 }
+.bg-pattern {
+  background-image: url("../assets/img/repeated-square.png");
+}
 .title {
   font-family: "Press Start 2P", cursive;
 }
 .pokemon-name {
   font-family: "Bangers", cursive;
+}
+.w-90 {
+  width: 22rem;
 }
